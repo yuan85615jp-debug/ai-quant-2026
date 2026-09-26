@@ -1,0 +1,30 @@
+# 多智能体交易员系统配置文件
+
+api:
+  # 支持任何 OpenAI 兼容接口
+  # DeepSeek 官方示例：
+  #   base_url: "https://api.deepseek.com/v1"
+  #   model: "deepseek-reasoner" 或 "deepseek-chat"
+  # 本地 Ollama 示例：
+  #   base_url: "http://localhost:11434/v1"
+  #   api_key: "ollama"
+  #   model: "qwen2.5:32b" 或 "deepseek-r1:14b"
+  base_url: "https://api.deepseek.com/v1"
+  api_key: "sk-your-key-here"
+  model: "deepseek-reasoner"
+
+traders:
+  - class: InstitutionalTrader
+    enabled: true
+  - class: AggressiveTrader
+    enabled: true
+  - class: SeniorTrader
+    enabled: true
+
+decision_maker:
+  model: "deepseek-reasoner"   # 可用更强模型做最终综合
+  max_workers: 3
+
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
